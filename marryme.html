@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Marry Me?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #ffd1dc, #ffe4e1);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #b30059;
+      text-shadow: 2px 2px 8px #fff;
+      margin-bottom: 30px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .buttons {
+      display: flex;
+      gap: 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    #yesBtn {
+      background-color: #ff4d88;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      background-color: #e6005c;
+    }
+
+    #noBtn {
+      background-color: #cccccc;
+      color: #333;
+    }
+
+    #noBtn:hover {
+      background-color: #999;
+    }
+
+    .response {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 1.2rem;
+      color: #333;
+      max-width: 600px;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center/contain;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💍 Will You Marry Me? 💖</h1>
+
+  <div class="buttons">
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 😢</button>
+  </div>
+
+  <div class="response" id="responseText"></div>
+
+  <div class="hearts">
+    <!-- Random floating hearts -->
+    <script>
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+        document.querySelector(".hearts").appendChild(heart);
+      }
+    </script>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const responseText = document.getElementById('responseText');
+
+    yesBtn.addEventListener('click', () => {
+      responseText.innerHTML = `
+        💌 You said YES!<br><br>
+        Roses are red,<br>
+        Violets are blue,<br>
+        My heart beats forever,<br>
+        Only for you.<br><br>
+        From this moment, forever starts. ❤️
+      `;
+    });
+
+    noBtn.addEventListener('click', () => {
+      responseText.innerHTML = `
+        😢 Oh no...<br><br>
+        My heart just dropped like a missed call...<br>
+        But it's okay, maybe it’s just not the right time.<br>
+        I'll still smile, because loving you was beautiful. 💔
+      `;
+    });
+  </script>
+
+</body>
+</html>
